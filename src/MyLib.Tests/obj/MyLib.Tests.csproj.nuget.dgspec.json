@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib.Tests\\MyLib.Tests.csproj": {}
+    "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib.Tests\\MyLib.Tests.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib.Tests\\MyLib.Tests.csproj": {
+    "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib.Tests\\MyLib.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib.Tests\\MyLib.Tests.csproj",
+        "projectUniqueName": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib.Tests\\MyLib.Tests.csproj",
         "projectName": "MyLib.Tests",
-        "projectPath": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib.Tests\\MyLib.Tests.csproj",
+        "projectPath": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib.Tests\\MyLib.Tests.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib.Tests\\obj\\",
+        "outputPath": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\MyLib.csproj": {
-                "projectPath": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\MyLib.csproj"
+              "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\MyLib.csproj": {
+                "projectPath": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\MyLib.csproj"
               }
             }
           }
@@ -107,14 +107,14 @@
         }
       }
     },
-    "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\MyLib.csproj": {
+    "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\MyLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\MyLib.csproj",
+        "projectUniqueName": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\MyLib.csproj",
         "projectName": "MyLib",
-        "projectPath": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\MyLib.csproj",
+        "projectPath": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\MyLib.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\obj\\",
+        "outputPath": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

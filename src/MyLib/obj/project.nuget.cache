@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "oNKtm3tGhf6DnIYq4FeZMXyaiJd+GX1zxNOqm+W64BwbhauJdTgZu/dD6OeuFyVWGXQin274qO/+qIPWe9SxJA==",
+  "dgSpecHash": "6m7vTDLu93OuFJ9AH7n8wZPdvlUN6rrwCX4HV/KWOOzDzoZ7cTnDqzseRlPnl3mwPAth4rJgiSzFKhoLZB4cFg==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\MyLib.csproj",
+  "projectFilePath": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\MyLib.csproj",
   "expectedPackageFiles": [
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []

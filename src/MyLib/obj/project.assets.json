@@ -30,7 +30,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "DE+7jRRn9kDzFD9XN6tJyGBPfF7CHYnsBFPYYFB070y9izAmLpoo6tBto4weCL8xyVl5t0rho1FFtADWwUAr3A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\MyLib.csproj",
+      "projectUniqueName": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\MyLib.csproj",
       "projectName": "MyLib",
-      "projectPath": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\MyLib.csproj",
+      "projectPath": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\MyLib.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\_playground\\netcore_tdd_bdd\\MyLib\\obj\\",
+      "outputPath": "D:\\Projects\\_playground\\bob\\jenkins-X\\jenkinx-microservice-netcore\\src\\MyLib\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

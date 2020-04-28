@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib", "MyLib\MyLib.csproj", "{19ACE9CF-00E0-4005-9A3A-380E9F10EAB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib", "src\MyLib\MyLib.csproj", "{19ACE9CF-00E0-4005-9A3A-380E9F10EAB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib.Tests", "MyLib.Tests\MyLib.Tests.csproj", "{CCFD93F9-D97D-480D-B2C5-3B48F2555070}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib.Tests", "src\MyLib.Tests\MyLib.Tests.csproj", "{CCFD93F9-D97D-480D-B2C5-3B48F2555070}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
