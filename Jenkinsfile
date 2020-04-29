@@ -38,9 +38,9 @@ pipeline {
 
           dir('./src/MyLib') {
             sh 'dotnet tool install --global dotnet-sonarscanner --version 4.6.2' 
-            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"MyLib" /d:sonar.host.url="10.108.94.149" /d:sonar.login="789b711cb3833cad56ba9aba00a265f8b5faac4c"'
+            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="10.108.94.149:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
             sh 'dotnet build -c Release -o ./app'
-            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner end /d:sonar.login="789b711cb3833cad56ba9aba00a265f8b5faac4c"'
+            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner end /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
           }
 
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
