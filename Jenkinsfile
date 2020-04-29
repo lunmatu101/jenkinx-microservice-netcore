@@ -33,7 +33,7 @@ pipeline {
             sh 'dotnet test --filter Category=BDD'
             sh 'echo "Passed BDD"'
 
-            sh '/tools/reportgenerator "-reports:./Coverage/cobertura.xml" "-targetdir:./TestResults/reports" "-reporttypes:HTML"'
+            // sh '/tools/reportgenerator "-reports:./Coverage/cobertura.xml" "-targetdir:./TestResults/reports" "-reporttypes:HTML"'
           }
 
           dir('./src/MyLib') {
@@ -95,14 +95,14 @@ pipeline {
   }
   post {
         always {
-          publishHTML target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: true,
-            keepAll: true,
-            reportDir: './src/MyLib.Tests/TestResults/reports',
-            reportFiles: 'index.htm',
-            reportName: 'Code Coverage Report'
-          ]
+          // publishHTML target: [
+          //   allowMissing: false,
+          //   alwaysLinkToLastBuild: true,
+          //   keepAll: true,
+          //   reportDir: './src/MyLib.Tests/TestResults/reports',
+          //   reportFiles: 'index.htm',
+          //   reportName: 'Code Coverage Report'
+          // ]
           cleanWs()
         }
   }
