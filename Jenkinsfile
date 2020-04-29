@@ -23,7 +23,7 @@ pipeline {
           sh "jx step credential -s npm-token -k file -f /builder/home/.npmrc --optional=true"
           
           dir('./src/MyLib.Tests') {
-            sh 'dotnet tool install dotnet-reportgenerator-globaltool --tool-path /tools'
+            // sh 'dotnet tool install dotnet-reportgenerator-globaltool --tool-path /tools'
 
             sh 'echo "Executing TDD..."'
             sh 'dotnet test --filter Category=TDD /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=/Coverage/cobertura.xml'
@@ -33,9 +33,8 @@ pipeline {
             sh 'dotnet test --filter Category=BDD'
             sh 'echo "Passed BDD"'
 
-            sh "ls /"
-
-            sh '/tools/reportgenerator "-reports:/Coverage/cobertura.xml" "-targetdir:/Coverage/reports" "-reporttypes:HTML"'
+            // sh "ls /"
+            // sh '/tools/reportgenerator "-reports:/Coverage/cobertura.xml" "-targetdir:/Coverage/reports" "-reporttypes:HTML"'
           }
 
           dir('./src/MyLib') {
@@ -97,14 +96,14 @@ pipeline {
   }
   post {
         always {
-          publishHTML target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: true,
-            keepAll: true,
-            reportDir: '/Coverage/reports',
-            reportFiles: 'index.htm',
-            reportName: 'Code Coverage Report'
-          ]
+          // publishHTML target: [
+          //   allowMissing: false,
+          //   alwaysLinkToLastBuild: true,
+          //   keepAll: true,
+          //   reportDir: '/Coverage/reports',
+          //   reportFiles: 'index.htm',
+          //   reportName: 'Code Coverage Report'
+          // ]
           cleanWs()
         }
   }
