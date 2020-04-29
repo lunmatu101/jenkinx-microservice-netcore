@@ -35,7 +35,7 @@ pipeline {
 
             sh '/tools/reportgenerator "-reports:./Coverage/cobertura.xml" "-targetdir:./Coverage/reports" "-reporttypes:HTML"'
 
-            sh "ls /Coverage"
+            sh "ls ./Coverage"
             sh "ls ./Coverage/reports"
           }
 
