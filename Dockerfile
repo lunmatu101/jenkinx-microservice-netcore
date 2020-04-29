@@ -1,6 +1,19 @@
-FROM node:9-slim
-ENV PORT 8080
-EXPOSE 8080
-WORKDIR /usr/src/app
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+WORKDIR /build
+COPY ["src/MyLib/MyLib.csproj", "src/MyLib/"]
+RUN dotnet restore "src/MyLib/MyLib.csproj"
 COPY . .
-CMD ["npm", "start"]
+WORKDIR "/build/src/MyLib"
+RUN dotnet build "MyLib.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "MyLib.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["tail", "-f"]

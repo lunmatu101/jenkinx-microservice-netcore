@@ -7,3 +7,12 @@ D:\Projects\_playground\netcore_tdd_bdd\MyLib\obj\Debug\netstandard2.0\MyLib.Ass
 D:\Projects\_playground\netcore_tdd_bdd\MyLib\obj\Debug\netstandard2.0\MyLib.dll
 D:\Projects\_playground\netcore_tdd_bdd\MyLib\obj\Debug\netstandard2.0\MyLib.pdb
 D:\Projects\_playground\netcore_tdd_bdd\MyLib\obj\Debug\netstandard2.0\MyLib.csproj.CoreCompileInputs.cache
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\bin\Debug\netstandard2.0\MyLib.deps.json
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\bin\Debug\netstandard2.0\MyLib.dll
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\bin\Debug\netstandard2.0\MyLib.pdb
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\obj\Debug\netstandard2.0\MyLib.csprojAssemblyReference.cache
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\obj\Debug\netstandard2.0\MyLib.csproj.CoreCompileInputs.cache
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\obj\Debug\netstandard2.0\MyLib.AssemblyInfoInputs.cache
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\obj\Debug\netstandard2.0\MyLib.AssemblyInfo.cs
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\obj\Debug\netstandard2.0\MyLib.dll
+D:\Projects\_playground\bob\jenkins-X\jenkinx-microservice-netcore\src\MyLib\obj\Debug\netstandard2.0\MyLib.pdb
