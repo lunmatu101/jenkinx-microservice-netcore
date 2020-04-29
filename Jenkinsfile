@@ -33,11 +33,14 @@ pipeline {
             sh 'dotnet test --filter Category=BDD'
             sh 'echo "Passed BDD"'
 
+            sh "ls"
+            sd "pwd"
+
             // sh '/tools/reportgenerator "-reports:./Coverage/cobertura.xml" "-targetdir:./TestResults/reports" "-reporttypes:HTML"'
           }
 
           dir('./src/MyLib') {
-            sh 'dotnet tool install --global dotnet-sonarscanner --version 4.6.2' 
+            sh 'dotnet tool install --global dotnet-sonarscanner' 
             sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="10.108.94.149:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
             sh 'dotnet build -c Release -o ./app'
             sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner end /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
