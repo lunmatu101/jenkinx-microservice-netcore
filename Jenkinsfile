@@ -34,9 +34,12 @@ pipeline {
             sh 'echo "Passed BDD"'
 
             sh '/tools/reportgenerator "-reports:/Coverage/cobertura.xml" "-targetdir:/Coverage/reports" "-reporttypes:HTML"'
+
+            sh "ls /Coverage"
+            sh "ls /Coverage/reports"
           }
 
-          dir('./src/MyLib') {
+          dir('./src/web') {
             sh 'dotnet tool install --global dotnet-sonarscanner' 
             sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="http://listening-monkey-sonarqube:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
             sh 'dotnet build -c Release -o ./app'
