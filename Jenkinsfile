@@ -26,7 +26,7 @@ pipeline {
             sh 'dotnet tool install dotnet-reportgenerator-globaltool --tool-path /tools'
 
             sh 'echo "Executing TDD..."'
-            sh 'dotnet test --filter Category=TDD -r ./TestResults -l "trx;LogFileName=./report.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/coverage/"'
+            sh 'dotnet test --filter Category=TDD -r ./TestResults -l "trx;LogFileName=./report.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/coverage/'
             sh 'echo "Passed TDD"'
 
             sh 'echo "Executing BDD..."'
