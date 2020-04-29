@@ -265,3 +265,7 @@ resultscoverage-html
 coverage.json
 coverage.hits
 coverage-html/
+src/MyLib.Tests/obj/
+src/MyLib/obj/
+src/MyLib.Tests/bin/
+src/MyLib/bin/
