@@ -25,13 +25,13 @@ pipeline {
           dir('./src/MyLib.Tests') {
             // sh 'dotnet tool install dotnet-reportgenerator-globaltool --tool-path /tools'
 
-            sh 'echo "Executing TDD..."'
-            sh 'dotnet test --filter Category=TDD /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=/Coverage/cobertura.xml'
-            sh 'echo "Passed TDD"'
+            // sh 'echo "Executing TDD..."'
+            // sh 'dotnet test --filter Category=TDD /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=/Coverage/cobertura.xml'
+            // sh 'echo "Passed TDD"'
 
-            sh 'echo "Executing BDD..."'
-            sh 'dotnet test --filter Category=BDD'
-            sh 'echo "Passed BDD"'
+            // sh 'echo "Executing BDD..."'
+            // sh 'dotnet test --filter Category=BDD'
+            // sh 'echo "Passed BDD"'
 
             // sh "ls /"
             // sh '/tools/reportgenerator "-reports:/Coverage/cobertura.xml" "-targetdir:/Coverage/reports" "-reporttypes:HTML"'
@@ -39,7 +39,7 @@ pipeline {
 
           dir('./src/MyLib') {
             sh 'dotnet tool install --global dotnet-sonarscanner' 
-            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="10.108.94.149:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
+            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="listening-monkey-sonarqube:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
             sh 'dotnet build -c Release -o ./app'
             sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner end /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
           }
