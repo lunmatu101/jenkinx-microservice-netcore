@@ -26,14 +26,14 @@ pipeline {
             sh 'dotnet tool install dotnet-reportgenerator-globaltool --tool-path /tools'
 
             sh 'echo "Executing TDD..."'
-            sh 'dotnet test --filter Category=TDD -r ./TestResults -l "trx;LogFileName=./report.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/coverage/'
+            sh 'dotnet test --filter Category=TDD /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./Coverage/cobertura.xml'
             sh 'echo "Passed TDD"'
 
             sh 'echo "Executing BDD..."'
             sh 'dotnet test --filter Category=BDD'
             sh 'echo "Passed BDD"'
 
-            sh '/tools/reportgenerator "-reports:./TestResults/coverage/coverage.cobertura.xml" "-targetdir:./TestResults/reports" "-reporttypes:HTML"'
+            sh '/tools/reportgenerator "-reports:./Coverage/cobertura.xml" "-targetdir:./TestResults/reports" "-reporttypes:HTML"'
           }
 
           dir('./src/MyLib') {
