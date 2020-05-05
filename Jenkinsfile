@@ -42,8 +42,8 @@ pipeline {
           dir('./') {
             sh "yum install -y java-1.8.0-openjdk"
             sh "yum install -y java-1.8.0-openjdk-devel"
-            sh "ENV JAVA_HOME /etc/alternatives/jre"
-            sh "echo $JAVA_HOME"
+            sh 'export JAVA_HOME="/etc/alternatives/jre"'
+            sh 'export PATH="$PATH:$JAVA_HOME"'
             sh "java -version"
 
             sh 'dotnet tool install --global dotnet-sonarscanner' 
