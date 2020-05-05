@@ -98,14 +98,14 @@ pipeline {
   }
   post {
         always {
-          publishHTML target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: true,
-            keepAll: true,
-            reportDir: './src/MyLib.Tests/Coverage/reports',
-            reportFiles: 'index.htm',
-            reportName: 'Code Coverage Report'
-          ]
+          // publishHTML target: [
+          //   allowMissing: false,
+          //   alwaysLinkToLastBuild: true,
+          //   keepAll: true,
+          //   reportDir: './src/MyLib.Tests/Coverage/reports',
+          //   reportFiles: 'index.htm',
+          //   reportName: 'Code Coverage Report'
+          // ]
           cleanWs()
         }
   }
