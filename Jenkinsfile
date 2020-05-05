@@ -119,7 +119,7 @@ pipeline {
         channel: "#jenkinsx",
         message: "build failed"
       )
-    }
+    },
     success {
       slackSend(
         channel: "#jenkinsx",
