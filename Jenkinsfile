@@ -40,6 +40,11 @@ pipeline {
           // }
 
           dir('./') {
+            sh "add-apt-repository ppa:webupd8team/java"
+            sh "apt-get update"
+            sh "apt-get install oracle-java8-installer"
+            sh "java -version"
+
             sh 'dotnet tool install --global dotnet-sonarscanner' 
             sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="http://listening-monkey-sonarqube:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
             sh 'dotnet build "netcore_tdd_bdd.sln" -c Release -o ./app'
