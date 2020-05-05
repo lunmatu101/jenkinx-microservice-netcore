@@ -39,18 +39,18 @@ pipeline {
           //   sh "ls ./Coverage/reports"
           // }
 
-          dir('./') {
-            sh "yum install -y java-1.8.0-openjdk"
-            sh "yum install -y java-1.8.0-openjdk-devel"
-            sh 'export JAVA_HOME="/etc/alternatives/jre"'
-            sh 'export PATH="$PATH:$JAVA_HOME"'
-            sh "java -version"
+          // dir('./') {
+          //   sh "yum install -y java-1.8.0-openjdk"
+          //   sh "yum install -y java-1.8.0-openjdk-devel"
+          //   sh 'export JAVA_HOME="/etc/alternatives/jre"'
+          //   sh 'export PATH="$PATH:$JAVA_HOME"'
+          //   sh "java -version"
 
-            sh 'dotnet tool install --global dotnet-sonarscanner' 
-            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="http://listening-monkey-sonarqube:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
-            sh 'dotnet build "netcore_tdd_bdd.sln" -c Release -o ./app'
-            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner end /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
-          }
+          //   sh 'dotnet tool install --global dotnet-sonarscanner' 
+          //   sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="http://listening-monkey-sonarqube:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
+          //   sh 'dotnet build "netcore_tdd_bdd.sln" -c Release -o ./app'
+          //   sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner end /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
+          // }
 
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
@@ -103,16 +103,28 @@ pipeline {
     }
   }
   post {
-        always {
-          // publishHTML target: [
-          //   allowMissing: false,
-          //   alwaysLinkToLastBuild: true,
-          //   keepAll: true,
-          //   reportDir: './src/MyLib.Tests/Coverage/reports',
-          //   reportFiles: 'index.htm',
-          //   reportName: 'Code Coverage Report'
-          // ]
-          cleanWs()
-        }
+    always {
+      publishHTML target: [
+        allowMissing: false,
+        alwaysLinkToLastBuild: true,
+        keepAll: true,
+        reportDir: './src/MyLib.Tests/Coverage/reports',
+        reportFiles: 'index.htm',
+        reportName: 'Code Coverage Report'
+      ]
+      cleanWs()
+    },
+    failure {
+      slackSend(
+        channel: "#jenkinsx",
+        message: "build failed"
+      )
+    }
+    success {
+      slackSend(
+        channel: "#jenkinsx",
+        message: "build success"
+      )
+    }
   }
 }
