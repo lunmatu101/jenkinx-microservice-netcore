@@ -40,6 +40,9 @@ pipeline {
           // }
 
           dir('./') {
+            sh "lsb_release -sirc"
+            sh "cat /etc/os-release"
+            
             sh "add-apt-repository ppa:webupd8team/java"
             sh "apt-get update"
             sh "apt-get install oracle-java8-installer"
