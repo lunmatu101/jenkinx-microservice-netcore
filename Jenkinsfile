@@ -113,13 +113,13 @@ pipeline {
         reportName: 'Code Coverage Report'
       ]
       cleanWs()
-    },
+    }
     failure {
       slackSend(
         channel: "#jenkinsx",
         message: "build failed"
       )
-    },
+    }
     success {
       slackSend(
         channel: "#jenkinsx",
