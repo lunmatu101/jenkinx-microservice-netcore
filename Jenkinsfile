@@ -26,29 +26,38 @@ pipeline {
             sh 'dotnet tool install dotnet-reportgenerator-globaltool --tool-path /tools'
 
             sh 'echo "Executing TDD..."'
-            sh 'dotnet test --filter Category=TDD -r ./TestResults -l "trx;LogFileName=./report.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./TestResults/coverage/"'
+            sh 'dotnet test --filter Category=TDD /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./Coverage/cobertura.xml'
             sh 'echo "Passed TDD"'
 
             sh 'echo "Executing BDD..."'
             sh 'dotnet test --filter Category=BDD'
             sh 'echo "Passed BDD"'
 
-            sh '/tools/reportgenerator "-reports:./TestResults/coverage/coverage.cobertura.xml" "-targetdir:./TestResults/reports" "-reporttypes:HTML"'
+            sh '/tools/reportgenerator "-reports:./Coverage/cobertura.xml" "-targetdir:./Coverage/reports" "-reporttypes:HTML"'
+
+            sh "ls ./Coverage"
+            sh "ls ./Coverage/reports"
           }
 
-          dir('./src/MyLib') {
-            sh 'dotnet tool install --global dotnet-sonarscanner --version 4.6.2' 
-            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"MyLib" /d:sonar.host.url="10.108.94.149" /d:sonar.login="789b711cb3833cad56ba9aba00a265f8b5faac4c"'
-            sh 'dotnet build -c Release -o ./app'
-            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner end /d:sonar.login="789b711cb3833cad56ba9aba00a265f8b5faac4c"'
+          dir('./') {
+            sh "yum install -y java-1.8.0-openjdk"
+            sh "yum install -y java-1.8.0-openjdk-devel"
+            sh 'export JAVA_HOME="/etc/alternatives/jre"'
+            sh 'export PATH="$PATH:$JAVA_HOME"'
+            sh "java -version"
+
+            sh 'dotnet tool install --global dotnet-sonarscanner' 
+            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner begin /k:"dotnet" /d:sonar.host.url="http://listening-monkey-sonarqube:9000" /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
+            sh 'dotnet build "netcore_tdd_bdd.sln" -c Release -o ./app'
+            sh 'export PATH="$PATH:$HOME/.dotnet/tools" && dotnet-sonarscanner end /d:sonar.login="d66d5ec8b91f95358cfb8e9427b8a5fb81f00a64"'
           }
 
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
-          dir('./charts/preview') {
-            sh "make preview"
-            sh "jx preview --app $APP_NAME --dir ../.."
-          }
+          // dir('./charts/preview') {
+          //   sh "make preview"
+          //   sh "jx preview --app $APP_NAME --dir ../.."
+          // }
         }
       }
     }
@@ -94,16 +103,28 @@ pipeline {
     }
   }
   post {
-        always {
-          publishHTML target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: true,
-            keepAll: true,
-            reportDir: './src/MyLib.Tests/TestResults/reports',
-            reportFiles: 'index.htm',
-            reportName: 'Code Coverage Report'
-          ]
-          cleanWs()
-        }
+    always {
+      publishHTML target: [
+        allowMissing: false,
+        alwaysLinkToLastBuild: true,
+        keepAll: true,
+        reportDir: './src/MyLib.Tests/Coverage/reports',
+        reportFiles: 'index.htm',
+        reportName: 'Code Coverage Report'
+      ]
+      cleanWs()
+    }
+    failure {
+      slackSend(
+        channel: "#jenkinsx",
+        message: "JenkinsX build failed"
+      )
+    }
+    success {
+      slackSend(
+        channel: "#jenkinsx",
+        message: "JenkinsX build success"
+      )
+    }
   }
 }
